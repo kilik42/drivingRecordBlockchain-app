@@ -57,6 +57,18 @@ app.get('/mine',function(req,res){
     res.json(block)
 })
 
+
+//driving-records/TX1234
+app.get("/driving-records/:driingLicenseNumber", function(req, res){
+
+     let drivingLicenseNumber = req.params.drivingLicenseNumber
+
+     
+
+})
+
+
+
 app.post('/transactions',function(req,res){
 
   console.log(transactions)

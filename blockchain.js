@@ -22,6 +22,24 @@ class Blockchain {
 
   }
 
+//responsible for giving info about all licenses being passed in
+transactionsByDrivingLicenseNumber(drivingLicenseNumber){
+
+    let transactions = []
+
+    this.blocks.forEach(function(block){
+
+      block.transactions.forEach(function(transaction){
+
+        if(drivingLicenseNumber == transaction.driverLicenseNumber){
+          transactions.push(transaction)
+        }
+      })
+    })
+}
+
+
+
   getNextBlock(transactions) {
 
       let block = new Block()
