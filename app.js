@@ -3,6 +3,7 @@ let Block = require('./block')
 let Blockchain = require('./blockchain')
 let BlockchainNode = require('./BlockchainNode')
 let Transaction = require('./transaction')
+let sha256 = require('js-sha256')
 
 const express = require('express')
 const app = express()
@@ -59,11 +60,11 @@ app.post('/transactions',function(req,res){
 
   console.log(transactions)
 
-  let driverLicenseNumber = req.body.driverLicenseNumber
+  let driverLicenseNumber = sha256(req.body.driverLicenseNumber)
   let violationDate = req.body.violationDate
   let violationType = req.body.violationType
 
-  let transaction = new Transaction(from,to,amount)
+  let transaction = new Transaction(driverLicenseNumber, violationDate,violationType)
 
   transactions.push(transaction)
 
